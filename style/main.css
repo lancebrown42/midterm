@@ -3,6 +3,10 @@
 	background-image: linear-gradient(#1F9DE5, #1C8CCC 60%, #1C8CCC);
 	border-width: 0px;
 }*/
+@import url(https://fonts.googleapis.com/css?family=Poppins&subset=latin-ext,latin);
+body{
+	font-family: 'Poppins', sans-serif;
+}
 input[type = radio]:checked{
   color: #555555;
   background-color: #d4d4d4;
@@ -13,4 +17,12 @@ input[type = radio]:checked{
 	height: 50px;
 	font-size: 20px;
 	margin-top: 5px;
+}
+#login{
+	margin-left: 20px;
+	text-decoration: none;
+	/*padding: 50px;*/
+	width: 162px;
+	height:76px;
+	font-size: 50px;
 }
