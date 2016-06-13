@@ -1,0 +1,16 @@
+/*.btn-info{
+	background-color: #1F9DE5;
+	background-image: linear-gradient(#1F9DE5, #1C8CCC 60%, #1C8CCC);
+	border-width: 0px;
+}*/
+input[type = radio]:checked{
+  color: #555555;
+  background-color: #d4d4d4;
+  border-color: rgba(0, 0, 0, 0.1);
+
+}
+.problem{
+	height: 50px;
+	font-size: 20px;
+	margin-top: 5px;
+}
