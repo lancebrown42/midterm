@@ -1,33 +1,19 @@
 <div class = 'jumbotron' ng-controller='problemCtrl as pCtrl'>
-		<h1>What's broken?</h1>
+	<h1 id="broken">What's broken?</h1>
+</div>
+<div class = 'container'>
+	<div class = 'row' data-toggle='buttons'>
+		<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-4 col-md-offset-1 btn-active problem' ng-repeat = 'problem in pCtrl.problemList' id = '{{problem.name}}problem' >
+
+			<input type="checkbox" name="problem" ng-model = 'selected' ng-change="pCtrl.solutionStarter(problem)">MY {{problem.name.toUpperCase()}}
+		</label>
+
 	</div>
-	<div class = 'container'>
-		<div class = 'row' data-toggle='buttons'>
-			<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' ng-repeat = 'problem in pCtrl.solutionList'>
-				<input type="radio" name="problem">MY {{problem.name.toUpperCase}}
-			</label>
-			<!-- <label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' >
-				<input type="radio" name="problem">MY PHONE
-			</label>
-			<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' >
-				<input type="radio" name="problem">MY INTERNET
-			</label>
-			<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' >
-				<input type="radio" name="problem">MY PC
-			</label>
-			<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' >
-				<input type="radio" name="problem">MY MAC
-			</label>
-			<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' >
-				<input type="radio" name="problem">MY PRINTER
-			</label>
-			<label class = 'btn btn-large btn-primary col-lg-4 col-lg-offset-1 col-xs-12 col-md-6 btn-active problem' >
-				<input type="radio" name="problem">MY CAT
-			</label> -->
-		</div>
-<!-- 		<a href="#" class = 'btn btn-large btn-primary col-lg-4 col-md-6'>MY SMART PHONE</a>
-		<a href="#" class = 'btn btn-large btn-primary col-lg-4 col-md-6'>MY DUMB PHONE</a>
-		<a href="#" class = 'btn btn-large btn-primary col-lg-4 col-md-6'>MY WINDOWS COMPUTER</a>
-		<a href="#" class = 'btn btn-large btn-primary col-lg-4 col-md-6'>MY MAC</a>
-		<a href="#" class = 'btn btn-large btn-primary col-lg-4 col-md-6'>MY PRINTER</a> -->
-	</div>
+
+</div>
+<div>
+	<h2>
+		{{}}
+	</h2>
+
+</div>

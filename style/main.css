@@ -13,16 +13,23 @@ input[type = radio]:checked{
   border-color: rgba(0, 0, 0, 0.1);
 
 }
+ui-view{
+	font-family: 'Poppins', sans-serif;
+}
 .problem{
 	height: 50px;
 	font-size: 20px;
 	margin-top: 5px;
 }
-#login{
-	margin-left: 20px;
-	text-decoration: none;
-	/*padding: 50px;*/
-	width: 162px;
-	height:76px;
-	font-size: 50px;
+
+#broken{
+	text-align: center;
+}
+#landingHeader{
+	text-align: center;
+
+}
+
+#logBtn{
+	transform: translateY(-40%);
 }
