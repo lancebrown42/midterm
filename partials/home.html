@@ -1,7 +1,11 @@
-<div id = 'homeDiv' class = 'jumbotron'>
-	<h1 id="landingHeader">So something isn't working correctly? Login to get help from your helper of choice!</h1>
-	<h1 class ='col-sm-4 col-sm-push-5'' id="logBtn" ng-hide="lCtrl.auth">
-		<a class ='btn-lg btn-danger'  id= 'login' ui-sref ='login'>Login</a>
-	</h1>
-
+<div id = 'homeDiv' class = 'jumbotron container'>
+	<h1 id="landingHeader">Uh oh. What'd you do?</h1>
+	<div class = 'row'>	
+		<h1 class ='col-sm-4 col-sm-push-3'' id="logBtn">
+			<a class ='btn-lg btn-danger login'  ui-sref ='login' ng-click = "">I need help!</a>
+		</h1>
+		<h1 class = 'col-sm-4 col-sm-push-2'>
+			<a class = 'btn-lg btn-danger login' ui-sref='login' ng-click = "">I'm here to help!</a>
+		</h1>
+	</div>
 </div>

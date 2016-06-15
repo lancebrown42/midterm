@@ -4,6 +4,11 @@ angular.module('fixitApp',['ui.router'])
 	.controller('homeCtrl',homeCtrl)
 	.controller('problemCtrl',problemCtrl)
 	.controller('profileCtrl',profileCtrl)
+	.controller('dashCtrl',dashCtrl)
+	.controller('hangoutCtrl',hangoutCtrl)
+
+
+var myFirebaseRef = new Firebase("https://https://helper-134221.firebaseapp.com.firebaseio.com/");
 
 configRouter.$inject = ['$stateProvider', '$urlRouterProvider']
 // loginCtrl.$inject = ['$state, $scope']
@@ -43,6 +48,12 @@ function configRouter($stateProvider, $urlRouterProvider){
       	templateUrl: 'partials/dashboard.html',
       	controller: 'dashCtrl as dCtrl'
       })
+      .state('hangout',{
+      	url: '/hangout',
+      	templateUrl: 'partials/hangout.html',
+      	controller: 'hangoutCtrl as hangCtrl'
+
+      })
     $urlRouterProvider.otherwise('/')
   }
 function homeCtrl($state){
@@ -50,10 +61,18 @@ function homeCtrl($state){
 
 } 
 loginCtrl.$inject = ['$state', '$window']
+var type
 function loginCtrl($state, $window){
 	lCtrl = this
 	console.log($state)
 	lCtrl.auth = false
+
+	lCtrl.setType = function (e){
+		console.log(e)
+		type = e.target.id 
+		console.log(type)
+		
+	}
 	lCtrl.username = ''
 	lCtrl.placeholder = $window.localStorage.getItem('user')||'Login'
 	lCtrl.login = function(e){
@@ -63,35 +82,25 @@ function loginCtrl($state, $window){
 		lCtrl.username = e.target[0].value
 		$window.localStorage.setItem('user',lCtrl.username)
 		lCtrl.placeholder = $window.localStorage.getItem('user')
-		
-		$state.go('problem')
+		console.log(e)
+		if (type == 'user'){
+			$state.go('problem')
+		}
+		else if (type == 'helper') {
+			$state.go('dashboard')
+		}
+		else{
+			console.log('fuck')
+		}
 
 		console.log(lCtrl.username)
 	}
 
 }
-function hLoginCtrl($state, $window){
-	hlCtrl = this
-	console.log($state)
-	hlCtrl.auth = false
-	hlCtrl.username = ''
-	hlCtrl.placeholder = $window.localStorage.getItem('user')||'Login'
-	hlCtrl.login = function(e){
-		// e.preventDefault()
-		// console.log(e)
-		hlCtrl.auth = true
-		hlCtrl.username = e.target[0].value
-		$window.localStorage.setItem('user',hlCtrl.username)
-		hlCtrl.placeholder = $window.localStorage.getItem('user')
-		
-		$state.go('dashboard')
 
-		console.log(hlCtrl.username)
-	}
-
-}
 function problemCtrl($state){
 	pCtrl=this
+	pCtrl.suggestion = ''
 	pCtrl.problemList = [
 	{name: 'phone',
 	solutionLabel: 'phone',
@@ -115,9 +124,20 @@ function problemCtrl($state){
 	// console.log(pCtrl.solutionList.name)
 	// pCtrl.loggedInUser = $window.localStorage.getItem('user')
 	pCtrl.solutionStarter = function(problem){
-		console.log(problem.solutionStarter)
+		// console.log(problem.solutionStarter)
+		for (var i = 0; i < problem.solutionStarter.length; i){
+			pCtrl.suggestion = problem.solutionStarter[i]
+			
+		}
 	}
 }
 function profileCtrl($state){
 
+}
+function hangoutCtrl(){
+	hangCtrl = this
+	gapi.hangout.render('placeholder-div', { 'render': 'createhangout' });
+}
+function dashCtrl(){
+	dCtrl = this
 }

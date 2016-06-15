@@ -1,0 +1,11 @@
+<div id = 'homeDiv' class = 'jumbotron container'>
+	<h1 id="landingHeader">Uh oh. What'd you do?</h1>
+	<div class = 'row' ng-controller = 'loginCtrl as lCtrl'>	
+		<h1 class ='col-sm-4 col-sm-push-3'' id="logBtn" ng-click = "lCtrl.setType($event)">
+			<a class ='btn-lg btn-danger login'  id = 'client' ui-sref ='login'>I need help!</a>
+		</h1>
+		<h1 class = 'col-sm-4 col-sm-push-2' ng-click = "lCtrl.setType($event)">
+			<a class = 'btn-lg btn-danger login' id='helper' ui-sref='login'> I'm here to help!</a>
+		</h1>
+	</div>
+</div>

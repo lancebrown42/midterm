@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html ng-app ='fixitApp'>
 <head>
-	<title>Shit's broke, yo</title>
-	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js'></script>
-	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.js'></script>
-	<script type="text/javascript" src ='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js'></script>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="style/bootswatch.css"></link>
-	<link rel="stylesheet" type="text/css" href="style/main.css">
-	<link rel="stylesheet" type="text/css" href="style/login.css">
+  <title>Shit's broke, yo</title>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js'></script>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.js'></script>
+  <script type="text/javascript" src ='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js'></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style/bootswatch.css"></link>
+  <link rel="stylesheet" type="text/css" href="style/main.css">
+  <link rel="stylesheet" type="text/css" href="style/login.css">
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -27,8 +29,8 @@
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
             <li><a ui-sref = 'about'">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
+            <li><a ui-sref = 'hangout'">Hangout</a></li>
+            <!-- <li class="dropdown">
               <a class="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
@@ -39,7 +41,7 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Something</a></li>
@@ -49,12 +51,23 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-	<!-- <header>This is my midterm</header> -->
+  <!-- <header>This is my midterm</header> -->
 
-	<ui-view></ui-view>
-	
+  <ui-view></ui-view>
+  
 
 
 <script type="text/javascript" src = 'app.js'></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDseBoVTOkK_-6DFbs3gxtHIvy_sTt5da8",
+    authDomain: "helper-134221.firebaseapp.com",
+    databaseURL: "https://helper-134221.firebaseio.com",
+    storageBucket: "helper-134221.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
 </body>
 </html>
