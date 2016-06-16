@@ -1,23 +1,28 @@
-<form class = 'form ticket'>
+<form class = 'form ticket' ng-submit = 'tCtrl.createTicket($event)'>
 <!-- <a href="ss.html">ss</a> -->
 	<ol>
 		<li>
 		<label>Which device, exactly, has a problem?</label><br>
-		<input class = 'form-control form-control-lg' type="text" name="device">
+		<input ng-model = 'tCtrl.newTicket.device' class = 'form-control form-control-lg' type="text" name="device">
 		</li>
 		<li>
 		<label>When did the problem start?</label><br>
-		<input class = 'form-control form-control-lg' type="text" name="timeframe">
+		<input ng-model = 'tCtrl.newTicket.timeframe' class = 'form-control form-control-lg' type="text" name="timeframe">
 		</li>
 		<li>
 		<label>Is the problem limited to certain functionality, or the entire device?</label><br>
-		<input  type="radio" name="scope" value='some' ng-model = 'tCtrl.scope'>Some things
-		<input  type="radio" name="scope" value='all' ng-model = 'tCtrl.scope'>Everything
+		<input  ng-model = 'tCtrl.newTicket.scope' type="radio" name="scope" value='some'>Some things
+		<input  ng-model = 'tCtrl.newTicket.scope' type="radio" name="scope" value='all'>Everything
 		</li>
-		<li ng-if="tCtrl.scope == 'some'">
+		<li>
 		<label>What does work?</label><br>
-		<input class = 'form-control form-control-lg' type="text" name="working">
+		<input ng-model = 'tCtrl.newTicket.working' class = 'form-control form-control-lg' type="text" name="working">
 		</li>
+		<li>
+		<label>What were you doing when the problem arose?</label><br>
+		<input ng-model = 'tCtrl.newTicket.context' class = 'form-control form-control-lg' type="text" name="context">
+		</li>
+
 
 	</ol>
 	<input type="submit" class = 'submit' name="submit">

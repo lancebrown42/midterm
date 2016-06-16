@@ -108,7 +108,7 @@ function loginCtrl($state, $window){
 
 }
 
-function problemCtrl($state,$firebaseArray,$firebaseObject,$scope){
+function problemCtrl($state,$firebaseArray,$scope){
 	var problem = new Firebase("https://helper-134221.firebaseio.com/problemList")
 	pCtrl=this
 	// var syncObj=$firebaseObject(problem)
@@ -118,29 +118,7 @@ function problemCtrl($state,$firebaseArray,$firebaseObject,$scope){
 	console.log(pCtrl.solutions)
 	pCtrl.problemList = $firebaseArray(problem)
 	console.log(pCtrl.problemList)
-	// pCtrl.solutions = ["restart","power","incidental"]
-	//[
-	// {"name": "phone",
-	// "solutionLabel": "phone",
-	// "solutionStarter": "Have you tried turning it off and on again?"},
-	// {"name": "internet",
-	// "solutionLabel": "internet",
-	// "solutionStarter": "Have you tried turning it off and on again?"},
-	// {"name": "pc",
-	// "solutionLabel": "pc",
-	// "solutionStarter": "Have you tried turning it off and on again?"},
-	// {"name": "mac",
-	// "solutionLabel": "mac",
-	// "solutionStarter": "Have you tried turning it off and on again?"},
-	// {"name": "printer",
-	// "solutionLabel": "printer",
-	// "solutionStarter": "Have you tried turning it off and on again?"},
-	// {"name": "cat",
-	// "solutionLabel": "cat",
-	// "solutionStarter": "Have you tried feeding it?"}
-	// ]
-	// console.log(pCtrl.solutionList.name)
-	// pCtrl.loggedInUser = $window.localStorage.getItem('user')
+
 	for (var i = 0; i < pCtrl.problemList.length; i++) {
 		console.log(problemList[i])
 	}
@@ -161,7 +139,9 @@ function problemCtrl($state,$firebaseArray,$firebaseObject,$scope){
 		// console.log(pCtrl.suggestion)
 	}
 }
-function profileCtrl($state){
+function profileCtrl($state,$firebaseArray){
+	prfCtrl = this
+
 
 }
 function hangoutCtrl(){
@@ -171,6 +151,18 @@ function hangoutCtrl(){
 function dashCtrl(){
 	dCtrl = this
 }
-function ticketCtrl(){
+ticketCtrl.$inject = ['$state', '$firebaseArray']
+function ticketCtrl($state,$firebaseArray){
 	tCtrl = this
+	var ref = new Firebase("https://helper-134221.firebaseio.com/userTickets")
+
+	var ticketSync = $firebaseArray(ref)
+	console.log(ticketSync)
+	tCtrl.createTicket = function(){
+		console.log('submitted')
+		console.log(tCtrl.newTicket)
+		ticketSync.$add(tCtrl.newTicket)
+		$state.go('profile')
+	}
+
 }
