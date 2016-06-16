@@ -1,0 +1,43 @@
+[
+   {
+      "name": "phone",
+      "restart": "Have you tried turning it off and on again?",
+      "power": "Have you tried charging it?",
+      "incidental": "Did you drop it?"
+   },
+   {
+      "name": "internet",
+      "restart": "Have you tried turning your router off and on again?",
+      "power": "Have you tried unplugging the router without turning it off?",
+      "incidental": "Do the neighbors still have internet?"
+
+   },
+   {
+      "name": "pc",
+      "restart": "Have you tried turning it off and on again?",
+      "power": "Is it plugged in/charged?",
+      "incidental": "Did Windows update?"
+
+   },
+   {
+      "name": "mac",
+      "restart": "Have you tried turning it off and on again?",
+      "power": "Is it plugged in/charged?",
+      "incidental": "Is there an OSX update available?"
+
+   },
+   {
+      "name": "printer",
+      "restart": "Have you tried turning it off and on again?",
+      "power": "Is it plugged in?",
+      "incidental": "Does it have enough ink/toner?"
+
+   },
+   {
+      "name": "cat",
+      "restart": "Did it take a nap?",
+      "power": "Have you tried feeding it?",
+      "incidental": "Is the litter clean?"
+
+   }
+]

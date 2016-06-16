@@ -1,4 +1,4 @@
-angular.module('fixitApp',['ui.router'])
+angular.module('fixitApp',['ui.router', 'firebase'])
 	.config(configRouter)
 	.controller('loginCtrl',loginCtrl)
 	.controller('homeCtrl',homeCtrl)
@@ -8,7 +8,11 @@ angular.module('fixitApp',['ui.router'])
 	.controller('hangoutCtrl',hangoutCtrl)
 
 
-var myFirebaseRef = new Firebase("https://https://helper-134221.firebaseapp.com.firebaseio.com/");
+// var myFirebaseRef = new Firebase("https://helper-134221.firebaseio.com/");
+
+// myFirebaseRef.on("value",function(snapshot){
+// 	console.log(snapshot)
+// })
 
 configRouter.$inject = ['$stateProvider', '$urlRouterProvider']
 // loginCtrl.$inject = ['$state, $scope']
@@ -64,7 +68,7 @@ loginCtrl.$inject = ['$state', '$window']
 var type
 function loginCtrl($state, $window){
 	lCtrl = this
-	console.log($state)
+	// console.log($state)
 	lCtrl.auth = false
 
 	lCtrl.setType = function (e){
@@ -98,37 +102,43 @@ function loginCtrl($state, $window){
 
 }
 
-function problemCtrl($state){
+function problemCtrl($state,$firebaseArray,$firebaseObject,$scope){
+	var problem = new Firebase("https://helper-134221.firebaseio.com/problemList")
 	pCtrl=this
-	pCtrl.suggestion = ''
-	pCtrl.problemList = [
-	{name: 'phone',
-	solutionLabel: 'phone',
-	solutionStarter: 'Have you tried turning it off and on again?'},
-	{name: 'internet',
-	solutionLabel: 'internet',
-	solutionStarter: 'Have you tried turning it off and on again?'},
-	{name: 'pc',
-	solutionLabel: 'pc',
-	solutionStarter: 'Have you tried turning it off and on again?'},
-	{name: 'mac',
-	solutionLabel: 'mac',
-	solutionStarter: 'Have you tried turning it off and on again?'},
-	{name: 'printer',
-	solutionLabel: 'printer',
-	solutionStarter: 'Have you tried turning it off and on again?'},
-	{name: 'cat',
-	solutionLabel: 'cat',
-	solutionStarter: 'Have you tried feeding it?'},
-	]
+	// var syncObj=$firebaseObject(problem)
+	// syncObj.$bindTo($scope,"pCtrl.problemList")
+	
+	pCtrl.problemList = $firebaseArray(problem)
+	console.log(pCtrl.problemList)
+	//[
+	// {"name": "phone",
+	// "solutionLabel": "phone",
+	// "solutionStarter": "Have you tried turning it off and on again?"},
+	// {"name": "internet",
+	// "solutionLabel": "internet",
+	// "solutionStarter": "Have you tried turning it off and on again?"},
+	// {"name": "pc",
+	// "solutionLabel": "pc",
+	// "solutionStarter": "Have you tried turning it off and on again?"},
+	// {"name": "mac",
+	// "solutionLabel": "mac",
+	// "solutionStarter": "Have you tried turning it off and on again?"},
+	// {"name": "printer",
+	// "solutionLabel": "printer",
+	// "solutionStarter": "Have you tried turning it off and on again?"},
+	// {"name": "cat",
+	// "solutionLabel": "cat",
+	// "solutionStarter": "Have you tried feeding it?"}
+	// ]
 	// console.log(pCtrl.solutionList.name)
 	// pCtrl.loggedInUser = $window.localStorage.getItem('user')
+	for (var i = 0; i < pCtrl.problemList.length; i++) {
+		console.log(problemList[i])
+	}
 	pCtrl.solutionStarter = function(problem){
 		// console.log(problem.solutionStarter)
-		for (var i = 0; i < problem.solutionStarter.length; i){
-			pCtrl.suggestion = problem.solutionStarter[i]
-			
-		}
+		pCtrl.suggestion = problem.power
+		console.log(problem.power)
 	}
 }
 function profileCtrl($state){
