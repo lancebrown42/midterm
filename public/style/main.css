@@ -4,17 +4,20 @@
 	border-width: 0px;
 }*/
 @import url(https://fonts.googleapis.com/css?family=Poppins&subset=latin-ext,latin);
-body{
+body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 	font-family: 'Poppins', sans-serif;
+	position: relative;
 }
+
 input[type = radio]:checked{
   color: #555555;
   background-color: #d4d4d4;
   border-color: rgba(0, 0, 0, 0.1);
 
 }
-ui-view{
-	font-family: 'Poppins', sans-serif;
+ui-view{/*
+	position: absolute;
+	top:50px;*/
 }
 .problem{
 	height: 50px;
@@ -39,5 +42,17 @@ ui-view{
 	/*padding: 50px;*/
 	/*width: 162px;*/
 	/*height:76px;*/
+	font-size: 30px;
+}
+.ticket{
+	position: absolute;
+	top: 55px;
+}
+#ticketBtn{
+	color: white; 
+	text-decoration: none;
+	font-size: 30px;
+}
+#solList{
 	font-size: 30px;
 }

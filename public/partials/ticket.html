@@ -1,0 +1,25 @@
+<form class = 'form ticket'>
+<!-- <a href="ss.html">ss</a> -->
+	<ol>
+		<li>
+		<label>Which device, exactly, has a problem?</label><br>
+		<input class = 'form-control form-control-lg' type="text" name="device">
+		</li>
+		<li>
+		<label>When did the problem start?</label><br>
+		<input class = 'form-control form-control-lg' type="text" name="timeframe">
+		</li>
+		<li>
+		<label>Is the problem limited to certain functionality, or the entire device?</label><br>
+		<input  type="radio" name="scope" value='some' ng-model = 'tCtrl.scope'>Some things
+		<input  type="radio" name="scope" value='all' ng-model = 'tCtrl.scope'>Everything
+		</li>
+		<li ng-if="tCtrl.scope == 'some'">
+		<label>What does work?</label><br>
+		<input class = 'form-control form-control-lg' type="text" name="working">
+		</li>
+
+	</ol>
+	<input type="submit" class = 'submit' name="submit">
+	
+</form>

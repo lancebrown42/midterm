@@ -6,6 +6,7 @@ angular.module('fixitApp',['ui.router', 'firebase'])
 	.controller('profileCtrl',profileCtrl)
 	.controller('dashCtrl',dashCtrl)
 	.controller('hangoutCtrl',hangoutCtrl)
+	.controller('ticketCtrl',ticketCtrl)
 
 
 // var myFirebaseRef = new Firebase("https://helper-134221.firebaseio.com/");
@@ -51,6 +52,11 @@ function configRouter($stateProvider, $urlRouterProvider){
       	url: '/dashboard',
       	templateUrl: 'partials/dashboard.html',
       	controller: 'dashCtrl as dCtrl'
+      })
+      .state('ticket',{
+      	url: '/ticket',
+      	templateUrl: 'partials/ticket.html',
+      	controller: 'ticketCtrl as tCtrl'
       })
       .state('hangout',{
       	url: '/hangout',
@@ -107,9 +113,12 @@ function problemCtrl($state,$firebaseArray,$firebaseObject,$scope){
 	pCtrl=this
 	// var syncObj=$firebaseObject(problem)
 	// syncObj.$bindTo($scope,"pCtrl.problemList")
-	
+	pCtrl.solution = []
+	pCtrl.debug = false
+	console.log(pCtrl.solutions)
 	pCtrl.problemList = $firebaseArray(problem)
 	console.log(pCtrl.problemList)
+	// pCtrl.solutions = ["restart","power","incidental"]
 	//[
 	// {"name": "phone",
 	// "solutionLabel": "phone",
@@ -136,9 +145,20 @@ function problemCtrl($state,$firebaseArray,$firebaseObject,$scope){
 		console.log(problemList[i])
 	}
 	pCtrl.solutionStarter = function(problem){
+		pCtrl.debug = true
+		pCtrl.suggestion = problem
 		// console.log(problem.solutionStarter)
-		pCtrl.suggestion = problem.power
-		console.log(problem.power)
+		// for (p in problem){
+		// 	console.log(problem)
+		// 	if (p.includes('$')){
+		// 		break
+		// 	}
+		// 	for (thing in problem.p)
+		// 	pCtrl.suggestion = thing
+		// 	// console.log(problem.p)
+		// }
+		// // pCtrl.suggestion = problem.
+		// console.log(pCtrl.suggestion)
 	}
 }
 function profileCtrl($state){
@@ -150,4 +170,7 @@ function hangoutCtrl(){
 }
 function dashCtrl(){
 	dCtrl = this
+}
+function ticketCtrl(){
+	tCtrl = this
 }
