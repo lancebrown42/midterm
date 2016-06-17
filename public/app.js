@@ -40,7 +40,7 @@ function configRouter($stateProvider, $urlRouterProvider){
       	controller: 'profileCtrl as prfCtrl'
       })
       .state('about',{
-      	url:'about',
+      	url:'/about',
       	templateUrl:'partials/about.html',
       })
       // .state('hlogin',{
@@ -70,10 +70,12 @@ function homeCtrl($state){
 	hCtrl=this
 
 } 
-loginCtrl.$inject = ['$state', '$window']
+loginCtrl.$inject = ['$state', '$window','$firebaseArray']
 var type
-function loginCtrl($state, $window){
+function loginCtrl($state, $window,$firebaseArray){
 	lCtrl = this
+	var ref = new Firebase("https://helper-134221.firebaseio.com/user")
+	var user = $firebaseArray(ref)
 	// console.log($state)
 	lCtrl.auth = false
 
@@ -84,14 +86,16 @@ function loginCtrl($state, $window){
 		
 	}
 	lCtrl.username = ''
-	lCtrl.placeholder = $window.localStorage.getItem('user')||'Login'
 	lCtrl.login = function(e){
 		// e.preventDefault()
 		// console.log(e)
 		lCtrl.auth = true
 		lCtrl.username = e.target[0].value
-		$window.localStorage.setItem('user',lCtrl.username)
-		lCtrl.placeholder = $window.localStorage.getItem('user')
+		user.$remove(0)
+		user.$add(lCtrl.username)
+		// $window.localStorage.setItem('user',lCtrl.username)
+		console.log(user[0].$value)
+		lCtrl.placeholder = user[0].$value
 		console.log(e)
 		if (type == 'user'){
 			$state.go('problem')
@@ -103,8 +107,9 @@ function loginCtrl($state, $window){
 			console.log('fuck')
 		}
 
-		console.log(lCtrl.username)
+		console.log(lCtrl.placeholder)
 	}
+	lCtrl.placeholder = user.value || 'Login'
 
 }
 
