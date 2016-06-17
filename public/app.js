@@ -51,7 +51,7 @@ function configRouter($stateProvider, $urlRouterProvider){
       .state('dashboard',{
       	url: '/dashboard',
       	templateUrl: 'partials/dashboard.html',
-      	controller: 'dashCtrl as dCtrl'
+      	controller: 'profileCtrl as prfCtrl'
       })
       .state('ticket',{
       	url: '/ticket',
@@ -141,6 +141,19 @@ function problemCtrl($state,$firebaseArray,$scope){
 }
 function profileCtrl($state,$firebaseArray){
 	prfCtrl = this
+	var ref = new Firebase("https://helper-134221.firebaseio.com/userTickets")
+	prfCtrl.ticketList = $firebaseArray(ref)
+	console.log(prfCtrl.ticketList[0])
+
+	prfCtrl.ticketMaker = function(){
+		for (ticket in prfCtrl.ticketList){
+			prfCtrl.singleTicket = ticket
+			console.log(prfCtrl.singleTicket)
+			
+		}
+	}()
+
+
 
 
 }
@@ -155,7 +168,10 @@ ticketCtrl.$inject = ['$state', '$firebaseArray']
 function ticketCtrl($state,$firebaseArray){
 	tCtrl = this
 	var ref = new Firebase("https://helper-134221.firebaseio.com/userTickets")
-
+	tCtrl.work = function(){
+		console.log('click')
+		tCtrl.working = 'some'
+	}
 	var ticketSync = $firebaseArray(ref)
 	console.log(ticketSync)
 	tCtrl.createTicket = function(){

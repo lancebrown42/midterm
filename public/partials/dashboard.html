@@ -1,11 +1,20 @@
 <div style = 'position: relative;'>
 	<div class = 'container' style = 'position: absolute; top:50px'>
 		<div class = 'row'>
-			<div class = 'card col-sm-3' ng-repeat = 'ticket in ticketList track by $index'>
-				<img class = 'card-img-top' src="http://placehold.it/350x150"></div>
-				<div class = 'card-title'>PROBLEM {{$index}} </div>
+			<div class = 'card col-md-10 col-md-offset-1 ticketContainer' ng-repeat='ticket in prfCtrl.ticketList track by $index'>
+			<div class = "card-block ticketItem col-md-6">
+				<p class = "card-text">Device: {{ticket.device}}<br>
+				When: {{ticket.timeframe}}<br>
+				Lost Functionality: {{ticket.scope}}<br>
+				What's still working: {{ticket.working}}<br>
+				What was happening prior to problem: {{ticket.context}}
+				</p>
 			</div>
+			
+			
+		</div>
 
 		</div>
+		<a ui-sref = "hangout" class = 'btn btn-primary'>CAN'T EXPLAIN IT IN TEXT? START A GOOGLE HANGOUT</a>
 	</div>
 </div>

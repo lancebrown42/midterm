@@ -11,7 +11,7 @@
 		</li>
 		<li>
 		<label>Is the problem limited to certain functionality, or the entire device?</label><br>
-		<input  ng-model = 'tCtrl.newTicket.scope' type="radio" name="scope" value='some'>Some things
+		<input  ng-model = 'tCtrl.newTicket.scope' type="radio" name="scope" value='some' ng-change = "tCtrl.work">Some things
 		<input  ng-model = 'tCtrl.newTicket.scope' type="radio" name="scope" value='all'>Everything
 		</li>
 		<li>

@@ -57,3 +57,14 @@ ui-view{/*
 #solList{
 	font-size: 30px;
 }
+.ticketContainer{
+	display: flex;
+	float: left;
+}
+.ticketItem{
+	border-width: 2px;
+	border-style: solid;
+	border-color: grey;
+	float: left;
+
+}
