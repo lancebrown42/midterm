@@ -185,5 +185,6 @@ function ticketCtrl($state,$firebaseArray){
 		ticketSync.$add(tCtrl.newTicket)
 		$state.go('profile')
 	}
+	
 
 }

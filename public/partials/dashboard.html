@@ -9,6 +9,11 @@
 				What's still working: {{ticket.working}}<br>
 				What was happening prior to problem: {{ticket.context}}
 				</p>
+				<form ng-submit = "ticket.$add(suggestion)">
+					
+					<textarea ng-model = "ticket.suggestion" placeholder="What would you suggest?"></textarea>
+					<input type="submit" name="submit">
+				</form>
 			</div>
 			
 			
